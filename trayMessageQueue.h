@@ -15,13 +15,13 @@
 */
 class TrayMessageQueue{
 public:
-    TrayMessageQueue(QSystemTrayIcon*& tray, size_t defaultDelay = 1000);
+    TrayMessageQueue(QSystemTrayIcon*& tray, size_t defaultDelay = 1000); // defaultDelay указывается в миллисекундах
 
     // Добавляем сообщение в Очередь для последующего показа
     void addMessage(std::string title, //  заголовок сообщение
                     std::string text, // текст сообщения
                     QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::NoIcon, // иконка сообщения трея. Доступны следуюшие: NoIcon, Information, Warning, Critical
-                    size_t delay = 0 // сколько сообщение будет на экране (если указан 0 - будет использоваться задержка по умолчанию)
+                    size_t delay = 0 // сколько миллисекунд сообщение будет на экране (если указан 0 - будет использоваться задержка по умолчанию)
                     ); 
     
     //void addMessage(std::string titile, std::string text, std::string messageType);
