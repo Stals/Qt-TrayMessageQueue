@@ -2,7 +2,7 @@
 #define MESSAGE_H
 
 struct Message{
-    Message( QSystemTrayIcon::MessageIcon icon, std::string title, std::string text, size_t delay) :
+    Message(QSystemTrayIcon::MessageIcon icon, std::string title, std::string text, size_t delay) :
         icon_(icon),
         title_(title),
         text_(text),

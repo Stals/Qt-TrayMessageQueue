@@ -17,10 +17,14 @@ public:
     void run(){
         while(true){
             if( !messageQueue_->empty() ){
+                //Достаём сообщение из Очереди и удаляем его оттуда
                 Message message = messageQueue_->front();
                 messageQueue_->pop();
+
+                //Выведем сообщение и заслипаем поток чтобы он не доставал следущее сообщение
                 showMessage(message.title_, message.text_, message.icon_, message.delay_);
                 msleep(message.delay_);
+
                 if(messageQueue_->empty()){
                     //Если мы показали последнее сообщение - убираем его сами чтобы не висело
                     tray_->showMessage("","", QSystemTrayIcon::NoIcon, 0);
