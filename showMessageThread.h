@@ -34,28 +34,10 @@ private:
     QSystemTrayIcon* tray_;
     std::queue<Message>* messageQueue_;
 
-    void showMessage(std::string title, std::string text, MessageIcon::Value icon, size_t delay){
-        QSystemTrayIcon::MessageIcon messageIcon;
-        switch (icon){
-        case MessageIcon::NoIcon:
-            messageIcon = QSystemTrayIcon::NoIcon;
-            break;
-        case MessageIcon::Information:
-            messageIcon = QSystemTrayIcon::Information;
-            break;
-        case MessageIcon::Warning:
-            messageIcon = QSystemTrayIcon::Warning;
-            break;
-        case MessageIcon::Critical:
-            messageIcon = QSystemTrayIcon::Critical;
-            break;
-        default:
-            messageIcon = QSystemTrayIcon::NoIcon;
-        }
-
+    void showMessage(std::string title, std::string text,  QSystemTrayIcon::MessageIcon icon, size_t delay){
         tray_->showMessage(QString::fromStdString(title),
                            QString::fromStdString(text),
-                           messageIcon,
+                           icon,
                            delay);
     }
 };
