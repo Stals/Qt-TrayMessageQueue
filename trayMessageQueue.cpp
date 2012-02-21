@@ -10,9 +10,9 @@ TrayMessageQueue::TrayMessageQueue(QSystemTrayIcon*& tray, size_t defaultDelay) 
     messageThread->start();
 }
 
-void TrayMessageQueue::addMessage(std::string title, std::string text, size_t delay,  QSystemTrayIcon::MessageIcon icon){
+void TrayMessageQueue::addMessage(std::string title, std::string text, QSystemTrayIcon::MessageIcon icon, size_t delay){
     delay = (delay == 0) ? defaultDelay_ : delay; 
-    addMessage(Message(icon, title, text, delay));
+    addMessage(Message(title, text, icon, delay));
 }
 
 void TrayMessageQueue::addMessage(Message message){
