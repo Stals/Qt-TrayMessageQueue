@@ -9,25 +9,25 @@ class ShowMessageThread : public QThread{
 
 public:
     ShowMessageThread(QSystemTrayIcon* tray, std::queue<Message>* messageQueue):
-        QThread(),
-        tray_(tray),
-        messageQueue_(messageQueue){
+            QThread(){
+        this->tray = tray;
+        this->messageQueue = messageQueue;
     }
 
     void run(){
         while(true){
-            if( !messageQueue_->empty() ){
+            if( !messageQueue->empty() ){
                 //Достаём сообщение из Очереди и удаляем его оттуда
-                Message message = messageQueue_->front();
-                messageQueue_->pop();
+                Message message = messageQueue->front();
+                messageQueue->pop();
 
                 //Выведем сообщение и заслипаем поток чтобы он не доставал следущее сообщение
-                showMessage(message.title_, message.text_, message.icon_, message.delay_);
-                msleep(message.delay_);
+                showMessage(message.title, message.text, message.icon, message.delay);
+                msleep(message.delay);
 
-                if(messageQueue_->empty()){
+                if(messageQueue->empty()){
                     //Если мы показали последнее сообщение - убираем его сами чтобы не висело
-                    tray_->showMessage("","", QSystemTrayIcon::NoIcon, 0);
+                    tray->showMessage("","", QSystemTrayIcon::NoIcon, 0);
                 }
             }
         }
@@ -35,14 +35,14 @@ public:
     }
 
 private:
-    QSystemTrayIcon* tray_;
-    std::queue<Message>* messageQueue_;
+    QSystemTrayIcon* tray;
+    std::queue<Message>* messageQueue;
 
     void showMessage(std::string title, std::string text,  QSystemTrayIcon::MessageIcon icon, size_t delay){
-        tray_->showMessage(QString::fromStdString(title),
-                           QString::fromStdString(text),
-                           icon,
-                           delay);
+        tray->showMessage(QString::fromStdString(title),
+                          QString::fromStdString(text),
+                          icon,
+                          delay);
     }
 };
 

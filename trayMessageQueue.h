@@ -22,11 +22,11 @@ public:
                     std::string text, // текст сообщения
                     QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::NoIcon, // иконка сообщения трея. Доступны следуюшие: NoIcon, Information, Warning, Critical
                     size_t delay = 0 // сколько миллисекунд сообщение будет на экране (если указан 0 - будет использоваться задержка по умолчанию)
-                    ); 
-    
+                    );
+
 private:
-    QSystemTrayIcon* tray_; 
-    size_t defaultDelay_;
+    QSystemTrayIcon* tray;
+    size_t defaultDelay;
 
     std::queue<Message> messageQueue;
     ShowMessageThread* messageThread;
