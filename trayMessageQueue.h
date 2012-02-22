@@ -24,8 +24,6 @@ public:
                     size_t delay = 0 // сколько миллисекунд сообщение будет на экране (если указан 0 - будет использоваться задержка по умолчанию)
                     ); 
     
-    //void addMessage(std::string titile, std::string text, std::string messageType);
-
 private:
     QSystemTrayIcon* tray_; 
     size_t defaultDelay_;
