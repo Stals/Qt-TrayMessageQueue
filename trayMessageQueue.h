@@ -31,21 +31,9 @@ private:
     size_t defaultDelay_;
 
     std::queue<Message> messageQueue;
-    //std::map<std::string, MessageType> messageTypes;
     ShowMessageThread* messageThread;
 
     void addMessage(Message message);
-
-    /*
- 	struct MessageType{
-		MessageType(MessageIcon icon, size_t delay) :
-			icon_(icon),
-			delay_(delay){
-		}
-  		MessageIcon icon_;
-  		size_t delay_;
- 	};
- 	*/
 
 };
 
