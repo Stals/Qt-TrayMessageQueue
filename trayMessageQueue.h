@@ -15,7 +15,7 @@
 */
 class TrayMessageQueue{
 public:
-    TrayMessageQueue(QSystemTrayIcon*& tray, size_t defaultDelay = 1000); // defaultDelay указывается в миллисекундах
+    TrayMessageQueue(QSystemTrayIcon* tray, size_t defaultDelay = 1000); // defaultDelay указывается в миллисекундах
 
     // Добавляем сообщение в Очередь для последующего показа
     void addMessage(std::string title, //  заголовок сообщение

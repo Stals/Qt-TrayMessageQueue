@@ -8,7 +8,7 @@
 class ShowMessageThread : public QThread{
 
 public:
-    ShowMessageThread(QSystemTrayIcon*& tray, std::queue<Message>* messageQueue):
+    ShowMessageThread(QSystemTrayIcon* tray, std::queue<Message>* messageQueue):
         QThread(),
         tray_(tray),
         messageQueue_(messageQueue){

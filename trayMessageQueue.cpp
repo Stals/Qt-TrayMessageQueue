@@ -2,7 +2,7 @@
 
 
 //todo сделать чтобы trayMessageQueue был friend с showMessageThread , чтобы был постоянный доступ к tray и queue
-TrayMessageQueue::TrayMessageQueue(QSystemTrayIcon*& tray, size_t defaultDelay) :
+TrayMessageQueue::TrayMessageQueue(QSystemTrayIcon* tray, size_t defaultDelay) :
     tray_(tray),
     defaultDelay_(defaultDelay){
 
