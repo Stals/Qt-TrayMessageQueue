@@ -18,3 +18,20 @@ void TrayMessageQueue::addMessage(std::string title, std::string text, QSystemTr
 void TrayMessageQueue::addMessage(Message message){
     messageQueue.push(message);
 }
+
+void TrayMessageQueue::addMessage(std::string messageTemplateName){
+    // Если шалона с таким названием нет - вылетит исключение
+    addMessage(messageTemplates[messageTemplateName]);
+}
+
+void TrayMessageQueue::addMessageTemplate(std::string messageTemplateName, std::string title, std::string text, QSystemTrayIcon::MessageIcon icon, size_t delay){
+    delay = (delay == 0) ? defaultDelay : delay;
+    messageTemplates[messageTemplateName] = Message(title, text, icon, delay);
+}
+
+
+void TrayMessageQueue::removeMessageTemplate(std::string messageTemplateName){
+    std::map<std::string, Message>::iterator it = messageTemplates.find(messageTemplateName);
+    if (it != messageTemplates.end())
+        messageTemplates.erase(it);
+}
