@@ -40,7 +40,6 @@ public:
 
 
 private:
-    QSystemTrayIcon* tray;
     size_t defaultDelay;
 
     std::queue<Message> messageQueue;
