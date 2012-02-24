@@ -23,8 +23,8 @@ void TrayMessageQueue::addMessage(std::string messageTemplateName){
         addMessage(messageTemplates[messageTemplateName]);
     }else{
     	// Если шаблона с таким названием нет - в терей будет выведено сообщение об ошибке
-        std::string text = "'" + messageTemplateName + "' - unknown template.";
-        addMessage("Internal Error", text, QSystemTrayIcon::Warning, 3000);
+        std::string errorMessage = "'" + messageTemplateName + "' - unknown template.";
+        addMessage("Internal Error", errorMessage, QSystemTrayIcon::Warning, 3000);
     }
 }
 
