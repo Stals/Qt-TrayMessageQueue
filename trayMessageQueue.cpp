@@ -1,6 +1,5 @@
 #include "trayMessageQueue.h"
 
-
 //todo сделать чтобы trayMessageQueue был friend с showMessageThread , чтобы был постоянный доступ к tray и queue
 TrayMessageQueue::TrayMessageQueue(QSystemTrayIcon* tray, size_t defaultDelay){
     this->tray = tray;
@@ -20,8 +19,14 @@ void TrayMessageQueue::addMessage(Message message){
 }
 
 void TrayMessageQueue::addMessage(std::string messageTemplateName){
-    // Если шалона с таким названием нет - вылетит исключение
-    addMessage(messageTemplates[messageTemplateName]);
+
+    if (messageTemplates.find(messageTemplateName) != messageTemplates.end()){
+        addMessage(messageTemplates[messageTemplateName]);
+    }else{
+    	// Если шалона с таким названием нет - в терей будет выведено сообщение об ошибке
+        std::string text = "'" + messageTemplateName + "' - unknown template.";
+        addMessage("Internal Error", text, QSystemTrayIcon::Warning, 3000);
+    }
 }
 
 void TrayMessageQueue::addMessageTemplate(std::string messageTemplateName, std::string title, std::string text, QSystemTrayIcon::MessageIcon icon, size_t delay){
