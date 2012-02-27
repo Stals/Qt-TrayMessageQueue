@@ -29,7 +29,10 @@ tray->show();
 
 trayMessageQueue = TrayMessageQueue(tray);
 
-// Выведет сообщение на 3 секунды
+// Выведет сообщение без иконки на 2 секундны (так как небыла указана задержка - используется задержка по умолчанию)
+trayMEssageQueue.addMessage("Title", "Text");
+
+// Выведет сообщение с иконкой на 3 секунды 
 trayMessageQueue.addMessage("Title", "Text", QSystemTrayIcon::Notification, 3000);
 
 // Но если мы постоянно в разных кусках кода выводим одно и тоже сообщение или оно просто громоздкое - проще создать шаблон
