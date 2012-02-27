@@ -34,5 +34,5 @@ trayMessageQueue.addMessage("Title", "Text", QSystemTrayIcon::Notification, 3000
 
 // Но если мы постоянно в разных кусках кода выводим одно и тоже сообщение или оно просто громоздкое - проще создать шаблон
 trayMessageQueue.addMessageTemplate("TemplateName", "Title", "Text", QSystemTrayIcon::Notification, 3000);
-// И в последствии вызывать его просто по названиюэ
+// И в последствии вызывать его просто по названию
 trayMessageQueue.addMessage("TemplateName");
