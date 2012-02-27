@@ -38,9 +38,9 @@ private:
     QSystemTrayIcon* tray;
     std::queue<Message>* messageQueue;
 
-    void showMessage(std::string title, std::string text,  QSystemTrayIcon::MessageIcon icon, size_t delay){
-        tray->showMessage(QString::fromLocal8Bit(title.c_str()),
-                          QString::fromLocal8Bit(text.c_str()),
+    void showMessage(QString title, QString text,  QSystemTrayIcon::MessageIcon icon, size_t delay){
+        tray->showMessage(title,
+                          text,
                           icon,
                           delay);
     }

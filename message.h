@@ -3,15 +3,15 @@
 
 struct Message{
     Message(){}
-    Message(std::string title, std::string text, QSystemTrayIcon::MessageIcon icon, size_t delay){
+    Message(QString title, QString text, QSystemTrayIcon::MessageIcon icon, size_t delay){
         this->title = title;
         this->text = text;
         this->icon = icon;
         this->delay = delay;
     }
 
-    std::string title;
-    std::string text;
+    QString title;
+    QString text;
     QSystemTrayIcon::MessageIcon icon;
     size_t delay;
 };
